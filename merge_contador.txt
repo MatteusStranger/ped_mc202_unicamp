@@ -1,0 +1,57 @@
+mergeSort(vetor, k) 
+	temp = um vetor auxiliar de tamanho imenso;
+	retorne mergeSort2(vetor, temp, 0 (lado esquerdo), k-1 (lado direito)); 
+
+
+// Uma função recursiva auxiliar que classifica a matriz de entrada e retorna o número de inversões na matriz.
+
+mergeSort2(vetor, temp, esquerda, direita) 
+
+	meio, contador = 0; 
+	se (direito > esquerdo) 
+		meio = (direita + esqueda) / 2; 
+
+		contador += mergeSort2(vetor, temp, esquerda, meio); 
+		contador += mergeSort2(vetor, temp, meio + 1, direito); 
+
+		// Mesclar as duas partes
+		contador += merge(vetor, temp, esquerda, meio + 1, direita); 
+		
+	retorne contador; 
+
+merge(vetor, temp, esquerda, meio, direita) 
+ 
+	i, j, k; 
+	contador = 0; 
+
+	i = esquerda; // i é o índice da sub-matriz esquerda
+	j = meio; // j é o índice da sub-matriz direita
+	k = esquerda; // k é o índice da sub-matriz mesclada resultante
+	
+	enquanto ((i <= meio - 1) && (j <= direita))  
+		se (vetor[i] <= vetor[j])
+			temp[k++] = vetor[i++]; 
+		senão
+			temp[k++] = vetor[j++]; 
+			contador = contador + (meio - i);
+
+	// Copie os elementos restantes da sub-matriz esquerda (se houver) a temp
+	enquanto (i <= meio - 1) 
+		temp[k++] = vetor[i++]; 
+
+	// Copie os elementos restantes do subvetoray direito (se houver) a temp
+	enquanto (j <= direita) 
+		temp[k++] = vetor[j++]; 
+
+	// Copie de volta os elementos mesclados para a matriz original
+	para (i = esquerda; i <= direita; i++) 
+		vetor[i] = temp[i]; 
+
+	return contador; 
+ 
+
+inicio()
+	k = valor do usuário
+	for(leia vetor)
+
+	print(mergeSort(vetor,k)
